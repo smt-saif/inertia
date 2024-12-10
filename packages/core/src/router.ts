@@ -515,6 +515,10 @@ export class Router {
   }
 
   protected handlePopstateEvent(event: PopStateEvent): void {
+    if (!confirm("Go back?")) {
+      return;
+    }
+
     if (event.state !== null) {
       const page = event.state
       const visitId = this.createVisitId()
